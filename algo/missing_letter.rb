@@ -3,9 +3,23 @@
 # bonus: returns a string of all missing letters as a string. ex: find_missing_letter("ace") would return "bd", write your own test.
 
 def find_missing_letter(range)
+  not_in_range = []
+  range_letters = range.split("").sort
+  full_range = (range_letters.first..range_letters.last).to_a
+  
+  full_range.each do |let|
+    if !range_letters.include?(let)
+      not_in_range << let
+    end
+  end
+
+  if not_in_range.empty?
+    return nil
+  else
+    not_in_range.join("")
+  end
 
 end
-
 # Driver code - don't touch anything below this line.
 puts "TESTING find_missing_letter..."
 puts
